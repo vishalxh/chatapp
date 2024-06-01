@@ -1,5 +1,0 @@
-MONGO_DB_URL=mongodb+srv://vishal:vishal123@cluster0.dynjlfz.mongodb.net/
-JWT_SECRET=vishal123
-PORT=3000
-NODE_ENV=development
-CORS_ORIGIN=*
