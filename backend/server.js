@@ -2,7 +2,7 @@ import path from "path";
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
-
+import cors from "cors"
 import authRoutes from "./routes/auth.routes.js";
 import messageRoutes from "./routes/message.routes.js"; 
 import userRoutes from "./routes/user.routes.js";
@@ -16,7 +16,14 @@ const __dirname = path.resolve();
 // PORT should be assigned after calling dotenv.config() because we need to access the env variables. Didn't realize while recording the video. Sorry for the confusion.
 const PORT = process.env.PORT || 3000;
 
-app.use(express.json()); // to parse the incoming requests with JSON payloads (from req.body)
+app.use(cors({
+    origin: process.env.CORS_ORIGIN,
+    Credential: true
+}));
+
+
+app.use(express.json({limit:"16kb"})); // to parse the incoming requests with JSON payloads (from req.body)
+app.use(express.urlencoded({extended: true,limit: "16kb"}))
 app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
