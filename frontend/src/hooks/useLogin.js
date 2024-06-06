@@ -11,7 +11,7 @@ const useLogin = () => {
 		if (!success) return;
 		setLoading(true);
 		try {
-			const res = await fetch("/api/auth/login", {
+			const res = await fetch("api/auth/login", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({ username, password }),
@@ -25,6 +25,7 @@ const useLogin = () => {
 			localStorage.setItem("chat-user", JSON.stringify(data));
 			setAuthUser(data);
 		} catch (error) {
+			console.log(error)
 			toast.error(error.message);
 		} finally {
 			setLoading(false);
