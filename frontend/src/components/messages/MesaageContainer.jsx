@@ -22,7 +22,7 @@ const MessageContainer = () => {
 	const { selectedConversation, setSelectedConversation } = useConversation();
 
 	useEffect(() => {
-		
+		// cleanup functions (unmounts)
 		return () => setSelectedConversation(null);
 	}, [setSelectedConversation]);
 
